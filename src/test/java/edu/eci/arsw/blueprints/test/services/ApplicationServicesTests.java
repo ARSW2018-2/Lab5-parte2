@@ -1,5 +1,8 @@
 package edu.eci.arsw.blueprints.test.services;
 
+import edu.eci.arsw.blueprints.persistence.BlueprintNotFoundException;
+import edu.eci.arsw.blueprints.persistence.BlueprintsPersistence;
+import edu.eci.arsw.blueprints.persistence.impl.InMemoryBlueprintPersistence;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.Test;
@@ -14,15 +17,15 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class ApplicationServicesTests {
 
     
-    //RestaurantOrderServicesStub ros;
-
-    
-    @Test
-    public void contextLoads() {
-        
-        
+    @Test(expected = BlueprintNotFoundException.class)
+    public void mustThrowIfIsEmpty() throws BlueprintNotFoundException {
+        BlueprintsPersistence p = new InMemoryBlueprintPersistence();
+        p.eraserMemory();
         
         
     }
+        
+        
+    
 
 }
